@@ -110,10 +110,13 @@ employeeRouter.get('/employees/sort/:order', async (req, res) => {
     const { order } = req.params;
   
     try {
-      let sortDirection = 1; // Default to ascending order
+    //   let sortDirection = 1; // Default to ascending order
   
       if (order === 'desc') {
         sortDirection = -1; // Change to descending order
+      }
+      if(order === 'asc') {
+        sortDirection = 1
       }
   
       const employees = await EmployeeModel.find().sort({ salary: sortDirection }).exec();
